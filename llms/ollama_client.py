@@ -1,5 +1,3 @@
-# llms/ollama_client.py
-
 import requests
 
 # Ollama API base URL
