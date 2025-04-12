@@ -1,21 +1,15 @@
-# main.py
-
-import os
 from agents.code_writer import generate_code
 from agents.tester import generate_test
 from agents.executor import run_code_and_tests
 from agents.fixer import fix_code
 from pathlib import Path
 
-# You can replace this with dynamic input or read from a file
+# Explain the meaning of (to be able to)
 TASK_INPUT = """
 Write a Python function to check if a string is a palindrome.
 """
 
 def save_output(code: str, test: str, result: str):
-    """
-    Save generated code, test case, and execution result into the outputs/ directory.
-    """
     Path("outputs").mkdir(parents=True, exist_ok=True)
 
     with open("outputs/generated_code.py", "w", encoding="utf-8") as f:
@@ -28,36 +22,35 @@ def save_output(code: str, test: str, result: str):
         f.write(result)
 
 def main():
-    print("📨 Received task: ", TASK_INPUT.strip())
+    print("Task received:")
+    print(TASK_INPUT.strip())
 
-    # Step 1: Generate Python function from natural language task
-    print("🧠 Generating code from Agent ...")
+    # generate code
     code = generate_code(task=TASK_INPUT)
+    print("Code generated.")
 
-    # Step 2: Generate test cases for the function
-    print("🧪 Generating test cases ...")
+    # generate_test
     test_code = generate_test(function_code=code)
+    print("Test cases generated.")
 
-    # Step 3: Run the function and test it
-    print("⚙️ Executing code and tests ...")
-    result, success = run_code_and_tests(code, test_code)
+    # run code and test
+    result, passed = run_code_and_tests(code, test_code)
+    print("Test executed.")
 
-    # Step 4: If test failed, use fixer agent to debug and rerun
-    if not success:
-        print("🛠 Test failed → invoking fixer agent ...")
-        fixed_code = fix_code(task=TASK_INPUT, code=code, error_log=result)
-        result_fixed, success_fixed = run_code_and_tests(fixed_code, test_code)
-
-        # Save fixed result
-        save_output(fixed_code, test_code, result_fixed)
-
-        if success_fixed:
-            print("✅ Bug fixed successfully!")
-        else:
-            print("❌ Bug remains after fix attempt.")
-    else:
-        print("✅ Tests passed successfully!")
+    if passed:
+        print("(/) All tests passed on first attempt.")
         save_output(code, test_code, result)
+    else:
+        print("(!) Test failed. Attempting to fix...")
+        fixed_code = fix_code(task=TASK_INPUT, code=code, error_log=result)
+        fixed_result, fixed_passed = run_code_and_tests(fixed_code, test_code)
+
+        save_output(fixed_code, test_code, fixed_result)
+
+        if fixed_passed:
+            print("(/) Bug fixed. All tests passed.")
+        else:
+            print("(!) Bug still exists after fix attempt.")
 
 if __name__ == "__main__":
     main()
