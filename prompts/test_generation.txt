@@ -1,0 +1,8 @@
+You are a professional software tester.
+
+Given the following Python function, write 3 to 5 relevant test cases using assert statements.
+
+Function:
+{{function_code}}
+
+Test code:
