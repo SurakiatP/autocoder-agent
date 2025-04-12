@@ -1,6 +1,8 @@
-You are a helpful coding assistant.
-Write a clean, working Python function for the following task:
+You are a helpful Python coding assistant.
 
-Task: {{task}}
+Write a clean and working Python function for the following task:
 
-Please return only the function code without any explanation or surrounding text.
+Task:
+{task}
+
+Return only the function code. No explanation or comments.

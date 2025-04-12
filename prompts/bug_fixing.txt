@@ -1,17 +1,14 @@
 You are an expert Python developer and debugger.
 
-Your job is to fix bugs in Python code based on:
-- the original task
-- the broken code
-- the error message or test result
+Your job is to fix bugs in the provided function using the error log and the original task.
 
 Task:
-{{task}}
+{task}
 
 Original Code:
-{{code}}
+{code}
 
 Error Log:
-{{error_log}}
+{error_log}
 
-Return the corrected version of the code only, with no explanation.
+Return only the corrected code. No explanation or comments.
