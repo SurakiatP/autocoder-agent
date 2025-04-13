@@ -45,6 +45,13 @@ def main():
         fixed_code = fix_code(task=TASK_INPUT, code=code, error_log=result)
         fixed_result, fixed_passed = run_code_and_tests(fixed_code, test_code)
 
+        for attempt in range(6):
+            print(f"[!.] Fix attempt {attempt + 1}...")
+            code = fix_code(task=TASK_INPUT, code=code, error_log=result)
+            result, passed = run_code_and_tests(code, test_code)
+            if passed:
+                break
+
         save_output(fixed_code, test_code, fixed_result)
 
         if fixed_passed:
