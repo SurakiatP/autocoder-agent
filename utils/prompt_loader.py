@@ -17,3 +17,15 @@ def load_prompt(file_path: str, context: dict) -> str:
         raise ValueError(f"Missing variable in context: {e}")
     except FileNotFoundError:
         raise FileNotFoundError(f"Prompt file not found: {file_path}")
+
+def clean_code_response(text: str) -> str:
+    """
+    Remove Markdown formatting like ```python and ``` from LLM response.
+
+    Args:
+        text (str): LLM raw response
+
+    Returns:
+        str: Clean Python code without Markdown formatting
+    """
+    return text.replace("```python", "").replace("```", "").strip()
