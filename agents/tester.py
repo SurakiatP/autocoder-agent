@@ -1,25 +1,18 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
 from agents.model_router import route_task
-from utils.prompt_loader import load_prompt
+from utils.prompt_loader import load_prompt, clean_code_response
 
 def generate_test(function_code: str, max_tokens: int = 512) -> str:
     """
-    Generate test cases (assert statements) for a given Python function.
+    Generate test cases (assert statements) for the given function code.
 
     Args:
-        function_code (str): Python function to test.
-        max_tokens (int): Max tokens to generate.
+        function_code (str): The function code to be tested.
+        max_tokens (int): Maximum tokens to generate.
 
     Returns:
-        str: Python test code with assert statements.
+        str: The generated test cases.
     """
-    prompt = load_prompt("prompts/test_generation.txt", {
-        "function_code": function_code.strip()
-    })
-
+    prompt = load_prompt("prompts/test_generation.txt", {"function_code": function_code.strip()})
     response = route_task(task_type="test_generation", prompt=prompt, max_tokens=max_tokens)
-    return response.strip()
-
+    test_code = clean_code_response(response)
+    return test_code.strip()
