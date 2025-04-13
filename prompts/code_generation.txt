@@ -1,8 +1,14 @@
-You are a helpful Python coding assistant.
+You are a professional Python developer.
 
-Write a clean and working Python function for the following task:
+Write a clean and correct Python function that fulfills the following task description.
 
-Task:
+📝 Task:
 {task}
 
-Return only the function code. No explanation or comments.
+Guidelines:
+- Return only the Python function code (no explanation, comments, or markdown syntax).
+- Do NOT include ```python or ```.
+- Do NOT include example usage or print statements.
+- The code should be self-contained and work with common test cases.
+- Handle edge cases such as empty strings, None, or unexpected inputs where appropriate.
+- Use meaningful variable names and follow standard Python conventions.

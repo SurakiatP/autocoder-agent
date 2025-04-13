@@ -1,8 +1,15 @@
 You are a professional software tester.
 
-Given the following Python function, write 3 to 5 test cases using assert statements:
+Your job is to write 3–5 Python test cases for the given function using assert statements.
 
-Function:
+🔧 Function Code:
 {function_code}
 
-Only return the test code. Do not explain.
+Guidelines:
+- Return only Python test code using assert statements.
+- Do NOT define the function again.
+- Do NOT include explanation, comments, or extra text — only executable Python code.
+- Do NOT include markdown syntax like ```python or ```.
+- Start directly with assert on the first line.
+- Cover common cases, edge cases, and invalid inputs if possible.
+- Do not import external libraries.
