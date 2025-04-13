@@ -20,3 +20,4 @@ Guidelines:
 - The function name and signature must remain the same.
 - Make sure the code passes edge cases like empty strings, non-integer inputs, etc.
 - Avoid hardcoding test-specific values or skipping validations.
+- Please write in a way that covers all possible cases to avoid any mistakes in any case.
