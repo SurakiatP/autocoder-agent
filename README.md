@@ -3,6 +3,11 @@
 AutoCoder Agent is an Agentic AI project that automatically generates Python code from natural language tasks, creates corresponding test cases, executes the code, and iteratively fixes any bugs until all tests pass. The project is designed to showcase a full end-to-end automated coding pipeline using various AI agents.
 
 ---
+## 🧱 Project Workflow Architecture
+
+![alt text](project_st.jpg)
+
+---
 
 ## Table of Contents
 
