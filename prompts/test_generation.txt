@@ -12,4 +12,4 @@ Guidelines:
 - Do NOT include markdown syntax like ```python or ```.
 - Start directly with assert on the first line.
 - Cover common cases, edge cases, and invalid inputs if possible.
-- Do not import external libraries.
+- You can import Python libraries to improve the performance of the code you create.

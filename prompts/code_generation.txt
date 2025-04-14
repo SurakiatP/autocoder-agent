@@ -13,3 +13,4 @@ Guidelines:
 - Handle edge cases such as empty strings, None, or unexpected inputs where appropriate.
 - Use meaningful variable names and follow standard Python conventions.
 - Please write in a way that covers all possible cases to avoid any mistakes in any case.
+- You can import Python libraries to improve the performance of the code you create.
